@@ -29,8 +29,8 @@ gene <- paste(unique(map.sel$V5))
 gene.sel <- lapply(gene,function(genei){
 	print(genei)
 	pos.sel <- which(paste(data.p$TargetID)%in%paste(map.sel$V4[map.sel$V5==genei]))
-	rawi <- data.m[,pos.sel]
-	posi <- data.p[pos.sel,]
+	rawi <- data.m[,pos.sel,F]
+	posi <- data.p[pos.sel,,F]
 	return(list(rawi,posi))
 })
 setwd('/home/zhu/rushdata/methylation_net')
@@ -45,3 +45,10 @@ pmethy <- lapply(f,function(x){
 	load(x)
 	pmethy
 	})
+pmethy <- do.call(c,pmethy)
+setwd('/home/zhu/rushdata/code')
+sel <- readLines('methylation_candidate.csv')
+pmethy <- pmethy[names(pmethy)%in%sel]
+pmethy <- lapply(pmethy,function(x){x[1:2]})
+
+load('/home/zhu/rushdata/methylation_net/genesel_rawi.rda')
