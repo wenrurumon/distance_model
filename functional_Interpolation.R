@@ -29,7 +29,7 @@ ftransform <- function(X,pos,nbasis=31){
 
 model <- function(i,nbasis){
 	X <- gene.sel[[i]][[1]]
-	pos <- gene.sel[[i]][[2]]$MAPINFO
+	pos <- gene.sel[[i]][[2]]
 	ftransform(X,pos,nbasis)
 }
 
@@ -65,3 +65,5 @@ gene.out <- lapply(unique(map),function(i){
 	gene.qpca2[map==i,]
 })
 names(gene.out) <- gname
+gene.out <- do.call(cbind,lapply(gene.out,as.vector))
+
