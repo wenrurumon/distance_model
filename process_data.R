@@ -29,8 +29,8 @@ gene <- paste(unique(map.sel$V5))
 gene.sel <- lapply(gene,function(genei){
 	print(genei)
 	pos.sel <- which(paste(data.p$TargetID)%in%paste(map.sel$V4[map.sel$V5==genei]))
-	rawi <- data.m[,pos.sel,F]
-	posi <- data.p[pos.sel,,F]
+	rawi <- data.m[,pos.sel,drop=F]
+	posi <- data.p[pos.sel,,drop=F]
 	return(list(rawi,posi))
 })
 setwd('/home/zhu/rushdata/methylation_net')
