@@ -18,3 +18,7 @@ while(max(sapply(rlti,ncol))>80){
   rlti <- c(rlti,kmeans_initn(disti))
   print(sapply(rlti,ncol))
 }
+
+data.out <- lapply(rlti,function(x){
+  gene.out[,colnames(gene.out)%in%colnames(x)]
+})
