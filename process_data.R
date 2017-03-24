@@ -49,6 +49,8 @@ pmethy <- do.call(c,pmethy)
 setwd('/home/zhu/rushdata/code')
 sel <- readLines('methylation_candidate.csv')
 pmethy <- pmethy[names(pmethy)%in%sel]
+gname <- names(pmethy)
 pmethy <- lapply(pmethy,function(x){x[1:2]})
+names(pmethy) <- gname
 
 load('/home/zhu/rushdata/methylation_net/genesel_rawi.rda')
