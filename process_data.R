@@ -52,5 +52,8 @@ pmethy <- pmethy[names(pmethy)%in%sel]
 gname <- names(pmethy)
 pmethy <- lapply(pmethy,function(x){x[1:2]})
 names(pmethy) <- gname
+	
+gene.sel <- pmethy
+setwd('/home/zhu/rushdata/methylation_net')
+save(gene.sel,file='genesel_rawi.rda')
 
-load('/home/zhu/rushdata/methylation_net/genesel_rawi.rda')
