@@ -22,3 +22,4 @@ while(max(sapply(rlti,ncol))>80){
 data.out <- lapply(rlti,function(x){
   gene.out[,colnames(gene.out)%in%colnames(x)]
 })
+save(data.out,file='methy_data_out.rda')
